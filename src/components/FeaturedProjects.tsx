@@ -78,12 +78,12 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
         {/* Content */}
         <div className="p-6 space-y-4">
           <div>
-            <h3 className="text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+            {/* <h3 className="text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
               {project.title}
-            </h3>
+            </h3> */}
             <div className="flex items-center text-muted-foreground mb-3">
-              <MapPin className="w-4 h-4 mr-2" />
-              <span className="text-sm">{project.location}</span>
+              {/* <MapPin className="w-4 h-4 mr-2" /> */}
+              {/* <span className="text-sm">{project.location}</span> */}
             </div>
           </div>
 

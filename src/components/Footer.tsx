@@ -30,7 +30,7 @@ const Footer = () => {
           {/* Company Info */}
           <div>
             <h3 className="text-2xl font-bold mb-4">
-              Premium<span className="text-accent">Estate</span>
+              ARS<span className="text-accent">DEVELOPERS</span>
             </h3>
             <p className="text-white/80 mb-6 leading-relaxed">
               Your trusted partner in finding the perfect property. We're committed to making your dream of owning a home a reality.
@@ -93,21 +93,21 @@ const Footer = () => {
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
                 <span className="text-white/80">
-                  Sector 82, Faridabad, Haryana 121002
+                  MCF-628,Street No.28,Block-A Sanjay Colony, Near Lakhani Chowk, NIT Faridabad, Haryana 121005
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-accent flex-shrink-0" />
-                <a href="tel:+919876543210" className="text-white/80 hover:text-accent transition-colors">
-                  +91 98765 43210
+                <a href="tel:+917065389036" className="text-white/80 hover:text-accent transition-colors">
+                  +91-7065389036, +91-8168794073
                 </a>
               </li>
-              <li className="flex items-center gap-3">
+              {/* <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-accent flex-shrink-0" />
                 <a href="mailto:info@premiumestate.com" className="text-white/80 hover:text-accent transition-colors">
                   info@premiumestate.com
                 </a>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>

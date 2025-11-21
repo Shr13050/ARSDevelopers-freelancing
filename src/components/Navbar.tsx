@@ -46,7 +46,7 @@ const Navbar = () => {
                 isScrolled ? "text-primary" : "text-white"
               }`}
             >
-              Premium<span className="text-accent">Estate</span>
+              ARS<span className="text-accent">DEVELOPERS</span>
             </span>
           </motion.div>
 
@@ -70,10 +70,10 @@ const Navbar = () => {
             <Button
               variant="outline"
               size="sm"
-              className={`rounded-full ${
+              className={`rounded-full bg-accent ${
                 isScrolled
-                  ? "border-primary text-primary hover:bg-primary hover:text-white"
-                  : "border-white text-white hover:bg-white hover:text-primary"
+                  ? "text-primary hover:bg-primary hover:text-white"
+                  : " text-white hover:bg-white hover:text-primary"
               }`}
             >
               <Phone className="w-4 h-4 mr-2" />
@@ -119,7 +119,7 @@ const Navbar = () => {
               </a>
             ))}
             <div className="pt-4 space-y-2">
-              <Button variant="outline" className="w-full rounded-full">
+              <Button className="w-full rounded-full">
                 <Phone className="w-4 h-4 mr-2" />
                 Call Now
               </Button>

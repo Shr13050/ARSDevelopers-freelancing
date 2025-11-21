@@ -27,19 +27,19 @@ const ContactSection = () => {
     {
       icon: Phone,
       title: "Call Us",
-      details: "+91 98765 43210",
-      link: "tel:+919876543210",
+      details: "+91-7065389036,+91-8168794073",
+      link: "tel:+917065389036",
     },
-    {
-      icon: Mail,
-      title: "Email Us",
-      details: "info@premiumestate.com",
-      link: "mailto:info@premiumestate.com",
-    },
+    // {
+    //   icon: Mail,
+    //   title: "Email Us",
+    //   details: "info@premiumestate.com",
+    //   link: "mailto:info@premiumestate.com",
+    // },
     {
       icon: MapPin,
       title: "Visit Us",
-      details: "Sector 82, Faridabad",
+      details: "MCF-628,Street No.28,Block-A Sanjay Colony,Near Lakhani Chowk,NIT Faridabad,Haryana 121005",
       link: "#",
     },
   ];
