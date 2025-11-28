@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { MapPin, Maximize2, ArrowRight } from "lucide-react";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 const projects = [
   {
@@ -46,6 +47,7 @@ const projects = [
 const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: number }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const navigate = useNavigate();
 
   return (
     <motion.div
@@ -103,6 +105,7 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
 
           <Button
             className="w-full bg-primary hover:bg-primary/90 text-white rounded-full group/btn"
+            onClick={() => navigate(`/project/${project.id}`)}
           >
             View Details
             <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
