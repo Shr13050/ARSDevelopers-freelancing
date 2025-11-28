@@ -40,17 +40,17 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="group"
+      className="group h-full"
     >
-      <div className="relative overflow-hidden rounded-3xl shadow-luxury hover:shadow-hover transition-all duration-500 bg-card">
+      <div className="relative overflow-hidden rounded-3xl shadow-luxury hover:shadow-hover transition-all duration-500 bg-card flex flex-col h-full">
         {/* Image Container */}
-        <div className="relative h-72 overflow-hidden">
+        <div className="relative h-80 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent z-10" />
           <motion.img
             src={project.image}
             alt={project.title}
-            className="w-full h-full object-cover"
-            whileHover={{ scale: 1.1 }}
+            className="w-full h-full object-contain bg-white"
+            whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.6 }}
           />
           
@@ -63,8 +63,8 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
         </div>
 
         {/* Content */}
-        <div className="p-6 space-y-4">
-          <div>
+        <div className="p-6 space-y-4 flex-1 flex flex-col">
+          <div className="flex-1">
             <h3 className="text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
               {project.title}
             </h3>
