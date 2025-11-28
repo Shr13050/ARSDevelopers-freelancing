@@ -1,46 +1,31 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { MapPin, Maximize2, ArrowRight } from "lucide-react";
+import { Maximize2, ArrowRight } from "lucide-react";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { projects as projectsData } from "@/data/projects";
+import projectMainImage from "@/assets/project-main.jpg";
+import project2MainImage from "@/assets/project2-main.jpg";
 
 const projects = [
   {
     id: 1,
-    title: "Green Valley Estates",
-    location: "Sector 95, Faridabad",
-    price: "₹2,500/sq.ft",
-    image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80",
-    plotSizes: "150-300 sq.yd",
-    status: "Ready to Move",
+    title: projectsData[0].name,
+    location: projectsData[0].location,
+    price: projectsData[0].startingPrice,
+    image: projectMainImage,
+    plotSizes: projectsData[0].plotSizes.join(', '),
+    status: "Available",
   },
   {
     id: 2,
-    title: "Royal Gardens",
-    location: "NH-19, Greater Noida",
-    price: "₹3,200/sq.ft",
-    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80",
-    plotSizes: "200-500 sq.yd",
-    status: "Upcoming",
-  },
-  {
-    id: 3,
-    title: "Sunrise Meadows",
-    location: "Panchkula Extension",
-    price: "₹2,800/sq.ft",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
-    plotSizes: "180-400 sq.yd",
-    status: "Ongoing",
-  },
-  {
-    id: 4,
-    title: "Paradise Heights",
-    location: "Sector 89, Gurgaon",
-    price: "₹4,500/sq.ft",
-    image: "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&q=80",
-    plotSizes: "250-600 sq.yd",
-    status: "Ready to Move",
+    title: projectsData[1].name,
+    location: projectsData[1].location,
+    price: projectsData[1].pricePerUnit || projectsData[1].startingPrice,
+    image: project2MainImage,
+    plotSizes: projectsData[1].plotSizes.join(', '),
+    status: "New Launch",
   },
 ];
 
@@ -80,12 +65,11 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
         {/* Content */}
         <div className="p-6 space-y-4">
           <div>
-            {/* <h3 className="text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+            <h3 className="text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
               {project.title}
-            </h3> */}
-            <div className="flex items-center text-muted-foreground mb-3">
-              {/* <MapPin className="w-4 h-4 mr-2" /> */}
-              {/* <span className="text-sm">{project.location}</span> */}
+            </h3>
+            <div className="flex items-start text-muted-foreground mb-3">
+              <span className="text-sm line-clamp-2">{project.location}</span>
             </div>
           </div>
 
