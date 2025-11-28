@@ -7,13 +7,13 @@ const FloatingActions = () => {
     {
       icon: Phone,
       label: "Call",
-      href: "tel:+919876543210",
+      href: "tel:+917965389036",
       color: "bg-green-500 hover:bg-green-600",
     },
     {
       icon: MessageCircle,
       label: "WhatsApp",
-      href: "https://wa.me/919876543210",
+      href: "https://wa.me/917965389036",
       color: "bg-green-600 hover:bg-green-700",
     },
     {
