@@ -27,8 +27,8 @@ const ContactSection = () => {
     {
       icon: Phone,
       title: "Call Us",
-      details: "+91-7065389036,+91-8168794073",
-      link: "tel:+917065389036",
+      details: "+91-7965389036, +91-9053425711",
+      link: "tel:+917965389036",
     },
     // {
     //   icon: Mail,
