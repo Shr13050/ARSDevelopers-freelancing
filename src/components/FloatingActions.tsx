@@ -13,7 +13,7 @@ const FloatingActions = () => {
     {
       icon: MessageCircle,
       label: "WhatsApp",
-      href: "https://wa.me/917965389036",
+      href: "https://wa.me/919053425711",
       color: "bg-green-600 hover:bg-green-700",
     },
     {
