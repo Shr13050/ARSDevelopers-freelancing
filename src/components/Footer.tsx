@@ -12,7 +12,6 @@ const Footer = () => {
   const legalLinks = [
     { name: "Privacy Policy", href: "#" },
     { name: "Terms & Conditions", href: "#" },
-    { name: "RERA Details", href: "#" },
     { name: "Refund Policy", href: "#" },
   ];
 
@@ -98,8 +97,8 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-accent flex-shrink-0" />
-                <a href="tel:+917965389036" className="text-white/80 hover:text-accent transition-colors">
-                  +91-7965389036, +91-9053425711
+                <a href="tel:+917065389036" className="text-white/80 hover:text-accent transition-colors">
+                  +91-7065389036, +91-9053425711
                 </a>
               </li>
               {/* <li className="flex items-center gap-3">
@@ -115,7 +114,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-white/10 mt-12 pt-8 text-center">
           <p className="text-white/60 text-sm">
-            © {new Date().getFullYear()} PremiumEstate. All rights reserved. | RERA Registration No: HRERA-PKL-XXX-XXXX
+            © {new Date().getFullYear()} ARSDEVELOPERS. All rights reserved. 
           </p>
         </div>
       </div>

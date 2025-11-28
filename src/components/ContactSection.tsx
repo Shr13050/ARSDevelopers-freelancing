@@ -27,8 +27,8 @@ const ContactSection = () => {
     {
       icon: Phone,
       title: "Call Us",
-      details: "+91-7965389036, +91-9053425711",
-      link: "tel:+917965389036",
+      details: "+91-7065389036, +91-9053425711",
+      link: "tel:+917065389036",
     },
     // {
     //   icon: Mail,
@@ -153,7 +153,7 @@ const ContactSection = () => {
             })}
 
             {/* Map Placeholder */}
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6, delay: 0.6 }}
@@ -166,6 +166,23 @@ const ContactSection = () => {
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
+                title="Location Map"
+              />
+            </motion.div> */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="glass-card rounded-2xl overflow-hidden shadow-luxury h-64"
+            >
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3540.4853643449583!2d75.61639400000001!3d27.454145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjfCsDI3JzE0LjkiTiA3NcKwMzYnNTkuMCJF!5e0!3m2!1sen!2sin!4v1764321933448!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
                 title="Location Map"
               />
             </motion.div>

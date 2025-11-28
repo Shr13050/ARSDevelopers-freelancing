@@ -19,7 +19,7 @@ const Hero = () => {
       <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="text-center">
           {/* Badge */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -27,7 +27,7 @@ const Hero = () => {
           >
             <Check className="w-4 h-4 text-accent" />
             <span className="text-white text-sm font-medium">RERA Approved Projects</span>
-          </motion.div>
+          </motion.div> */}
 
           {/* Main Heading */}
           <motion.h1
@@ -86,7 +86,7 @@ const Hero = () => {
               { value: "500+", label: "Acres Developed" },
               { value: "2000+", label: "Happy Families" },
               { value: "15+", label: "Ongoing Projects" },
-              { value: "100%", label: "RERA Approved" },
+             
             ].map((stat, index) => (
               <div
                 key={index}

@@ -7,7 +7,7 @@ const FloatingActions = () => {
     {
       icon: Phone,
       label: "Call",
-      href: "tel:+917965389036",
+      href: "tel:+917065389036",
       color: "bg-green-500 hover:bg-green-600",
     },
     {
