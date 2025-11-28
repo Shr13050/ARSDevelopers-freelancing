@@ -1,30 +1,28 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, MapPin, Maximize2, Phone, Download, CheckCircle } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { ArrowLeft, MapPin, Phone, CheckCircle } from "lucide-react";
+import { useNavigate, useParams } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingActions from "@/components/FloatingActions";
-import projectMainImage from "@/assets/project-main.jpg";
-import amenitiesImage from "@/assets/amenities.jpg";
-import keyPlanImage from "@/assets/key-plan.png";
-import plotLayoutImage from "@/assets/plot-layout.jpg";
-import bookingPlanImage from "@/assets/booking-plan.jpg";
-import projectVideo from "@/assets/project-video.mp4";
+import { getProjectById } from "@/data/projects";
 
 const ProjectDetail = () => {
   const navigate = useNavigate();
+  const { id } = useParams();
+  
+  const project = getProjectById(Number(id));
 
-  const amenitiesList = [
-    "Boundary wall",
-    "Main entrance gate",
-    "CCTV camera",
-    "Water supply",
-    "24 Hours security",
-    "40 Feet wide road",
-    "Street lights",
-    "Greenery"
-  ];
+  if (!project) {
+    return (
+      <main className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold mb-4">Project Not Found</h1>
+          <Button onClick={() => navigate("/")}>Back to Home</Button>
+        </div>
+      </main>
+    );
+  }
 
   return (
     <main className="min-h-screen">
@@ -34,8 +32,8 @@ const ProjectDetail = () => {
       <section className="relative h-[60vh] min-h-[500px] overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60 z-10" />
         <motion.img
-          src={projectMainImage}
-          alt="Shri Shyama Township"
+          src={project.mainImage}
+          alt={project.name}
           className="w-full h-full object-cover"
           initial={{ scale: 1.1 }}
           animate={{ scale: 1 }}
@@ -59,24 +57,24 @@ const ProjectDetail = () => {
             </Button>
             
             <h1 className="text-5xl md:text-6xl font-bold mb-4">
-              Shri Shyama <span className="text-accent">Township</span>
+              {project.name.split(' ').slice(0, -1).join(' ')} <span className="text-accent">{project.name.split(' ').slice(-1)}</span>
             </h1>
             
             <div className="flex items-center justify-center gap-2 text-lg mb-6">
               <MapPin className="w-5 h-5 text-accent" />
               <p className="max-w-3xl">
-                Located on Khatu Road near the famous Khatu Shyam Temple, Shri Madhopur, Sikar District, Rajasthan – 332715
+                {project.location}
               </p>
             </div>
             
             <div className="flex flex-wrap justify-center gap-4 mt-8">
               <div className="glass-card px-6 py-3 rounded-full">
-                <span className="text-sm text-white/80">Plot Size</span>
-                <p className="text-xl font-bold">100 sq. Yard</p>
+                <span className="text-sm text-white/80">Plot Sizes</span>
+                <p className="text-xl font-bold">{project.plotSizes.join(', ')}</p>
               </div>
               <div className="glass-card px-6 py-3 rounded-full">
-                <span className="text-sm text-white/80">Starting Price</span>
-                <p className="text-xl font-bold text-accent">₹3,000/sq.yd</p>
+                <span className="text-sm text-white/80">{project.pricePerUnit ? 'Price' : 'Starting Price'}</span>
+                <p className="text-xl font-bold text-accent">{project.pricePerUnit || project.startingPrice}</p>
               </div>
             </div>
           </motion.div>
@@ -99,34 +97,34 @@ const ProjectDetail = () => {
               About the <span className="text-gradient">Project</span>
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Welcome to a well-planned residential project located in the peaceful surroundings of Shri Madhopur City, 
-              close to the divine Khatu Shyam Temple. Designed for comfort, safety, and modern living, this property 
-              offers everything you need for a secure and premium lifestyle.
+              {project.description}
             </p>
           </motion.div>
 
           {/* Video Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
-              Project <span className="text-gradient">Walkthrough</span>
-            </h2>
-            <div className="rounded-3xl overflow-hidden shadow-luxury">
-              <video 
-                controls 
-                className="w-full"
-                poster={projectMainImage}
-              >
-                <source src={projectVideo} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </div>
-          </motion.div>
+          {project.video && (
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="mb-16"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
+                Project <span className="text-gradient">Walkthrough</span>
+              </h2>
+              <div className="rounded-3xl overflow-hidden shadow-luxury">
+                <video 
+                  controls 
+                  className="w-full"
+                  poster={project.mainImage}
+                >
+                  <source src={project.video} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </motion.div>
+          )}
 
           {/* Amenities */}
           <motion.div
@@ -142,7 +140,7 @@ const ProjectDetail = () => {
             
             <div className="grid md:grid-cols-2 gap-8 items-start">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {amenitiesList.map((amenity, index) => (
+                {project.amenities.map((amenity, index) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, x: -20 }}
@@ -157,63 +155,73 @@ const ProjectDetail = () => {
                 ))}
               </div>
               
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-                className="rounded-2xl overflow-hidden shadow-luxury"
-              >
-                <img src={amenitiesImage} alt="Amenities" className="w-full h-full object-cover" />
-              </motion.div>
+              {project.amenitiesImage && (
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
+                  className="rounded-2xl overflow-hidden shadow-luxury"
+                >
+                  <img src={project.amenitiesImage} alt="Amenities" className="w-full h-full object-cover" />
+                </motion.div>
+              )}
             </div>
           </motion.div>
 
           {/* Layout Plans */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
-              Site <span className="text-gradient">Layout</span>
-            </h2>
-            
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-card rounded-2xl overflow-hidden shadow-luxury">
-                <div className="p-4 bg-primary/10 border-b border-border">
-                  <h3 className="text-xl font-bold text-foreground">Key Plan</h3>
-                </div>
-                <img src={keyPlanImage} alt="Key Plan" className="w-full" />
-              </div>
+          {(project.keyPlanImage || project.plotLayoutImage) && (
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="mb-16"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
+                Site <span className="text-gradient">Layout</span>
+              </h2>
               
-              <div className="bg-card rounded-2xl overflow-hidden shadow-luxury">
-                <div className="p-4 bg-primary/10 border-b border-border">
-                  <h3 className="text-xl font-bold text-foreground">Plot Layout</h3>
-                </div>
-                <img src={plotLayoutImage} alt="Plot Layout" className="w-full" />
+              <div className="grid md:grid-cols-2 gap-8">
+                {project.keyPlanImage && (
+                  <div className="bg-card rounded-2xl overflow-hidden shadow-luxury">
+                    <div className="p-4 bg-primary/10 border-b border-border">
+                      <h3 className="text-xl font-bold text-foreground">Key Plan</h3>
+                    </div>
+                    <img src={project.keyPlanImage} alt="Key Plan" className="w-full" />
+                  </div>
+                )}
+                
+                {project.plotLayoutImage && (
+                  <div className="bg-card rounded-2xl overflow-hidden shadow-luxury">
+                    <div className="p-4 bg-primary/10 border-b border-border">
+                      <h3 className="text-xl font-bold text-foreground">Plot Layout</h3>
+                    </div>
+                    <img src={project.plotLayoutImage} alt="Plot Layout" className="w-full" />
+                  </div>
+                )}
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          )}
 
           {/* Booking Plan */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
-              Booking & <span className="text-gradient">Payment Plan</span>
-            </h2>
-            
-            <div className="bg-card rounded-2xl overflow-hidden shadow-luxury max-w-2xl">
-              <img src={bookingPlanImage} alt="Booking Plan" className="w-full" />
-            </div>
-          </motion.div>
+          {project.bookingPlanImage && (
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="mb-16"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
+                Booking & <span className="text-gradient">Payment Plan</span>
+              </h2>
+              
+              <div className="bg-card rounded-2xl overflow-hidden shadow-luxury max-w-2xl">
+                <img src={project.bookingPlanImage} alt="Booking Plan" className="w-full" />
+              </div>
+            </motion.div>
+          )}
 
           {/* Location Map */}
           <motion.div
@@ -229,7 +237,7 @@ const ProjectDetail = () => {
             
             <div className="rounded-2xl overflow-hidden shadow-luxury">
               <iframe
-                src="https://maps.google.com/maps?q=Khatu%20Shyam%20Temple,%20Shri%20Madhopur,%20Sikar&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                src={project.mapEmbedUrl}
                 width="100%"
                 height="450"
                 style={{ border: 0 }}
@@ -243,7 +251,7 @@ const ProjectDetail = () => {
               <Button
                 size="lg"
                 className="bg-accent hover:bg-accent/90 text-white rounded-full"
-                onClick={() => window.open("https://maps.app.goo.gl/2wqRriEjYPfQWait6", "_blank")}
+                onClick={() => window.open(project.mapUrl, "_blank")}
               >
                 <MapPin className="w-5 h-5 mr-2" />
                 Open in Google Maps
