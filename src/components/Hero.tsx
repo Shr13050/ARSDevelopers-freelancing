@@ -84,7 +84,7 @@ const Hero = () => {
         }} transition={{
           duration: 0.7,
           delay: 0.4
-        }} className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20 max-w-4xl mx-auto">
+        }} className="grid grid-cols-2 md:grid-cols-3 gap-6 mt-20 max-w-4xl mx-auto">
             {[{
             value: "500+",
             label: "Acres Developed"
@@ -94,7 +94,12 @@ const Hero = () => {
           }, {
             value: "15+",
             label: "Ongoing Projects"
-          }].map((stat, index) => {})}
+          }].map((stat, index) => (
+              <div key={index} className="text-center">
+                <div className="text-3xl md:text-4xl font-bold text-white mb-1">{stat.value}</div>
+                <div className="text-white/70 text-sm">{stat.label}</div>
+              </div>
+            ))}
           </motion.div>
         </div>
       </div>

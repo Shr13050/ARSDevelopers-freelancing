@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 import { projects as projectsData } from "@/data/projects";
 import projectMainImage from "@/assets/project-main.jpg";
 import project2MainImage from "@/assets/project2-main.jpg";
+import project3KeyPlanImage from "@/assets/project3-keyplan.png";
+
 const projects = [{
   id: 1,
   title: projectsData[0].name,
@@ -23,6 +25,14 @@ const projects = [{
   image: project2MainImage,
   plotSizes: projectsData[1].plotSizes.join(', '),
   status: "New Launch"
+}, {
+  id: 3,
+  title: projectsData[2].name,
+  location: projectsData[2].location,
+  price: projectsData[2].startingPrice,
+  image: project3KeyPlanImage,
+  plotSizes: "350 - 900 sq. yards",
+  status: "Farm House"
 }];
 const ProjectCard = ({
   project,
@@ -129,7 +139,7 @@ const FeaturedProjects = () => {
         </motion.div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => <ProjectCard key={project.id} project={project} index={index} />)}
         </div>
 

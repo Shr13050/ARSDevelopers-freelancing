@@ -10,6 +10,9 @@ import project2AmenitiesImage from "@/assets/project2-amenities.jpg";
 import project2BookingImage from "@/assets/project2-booking.jpg";
 import project2KeyPlanImage from "@/assets/project2-keyplan.jpg";
 
+import project3KeyPlanImage from "@/assets/project3-keyplan.png";
+import project3LayoutImage from "@/assets/project3-layout.jpeg";
+
 export interface Project {
   id: number;
   name: string;
@@ -27,6 +30,7 @@ export interface Project {
   video?: string;
   mapUrl: string;
   mapEmbedUrl: string;
+  highlights?: string[];
 }
 
 export const projects: Project[] = [
@@ -77,6 +81,32 @@ export const projects: Project[] = [
     bookingPlanImage: project2BookingImage,
     mapUrl: "https://maps.app.goo.gl/NfbjWAu8tfw7Wpwd9",
     mapEmbedUrl: "https://maps.google.com/maps?q=Barsana&t=&z=13&ie=UTF8&iwloc=&output=embed"
+  },
+  {
+    id: 3,
+    name: "Shri Shayama City Farm House Phase 2",
+    location: "Malikpur, Sikar Highway, Khatushyam",
+    description: "Premium farm house plots ideal for investment & weekend living. Located near the holy destination Khatushyam Ji in a peaceful, green & high-growth zone.",
+    plotSizes: ["350 sq. yards", "to", "900 sq. yards"],
+    startingPrice: "₹5,000/sq.yd",
+    pricePerUnit: "₹5,000 per sq. yard",
+    highlights: [
+      "Premium farm house plots",
+      "Ideal for investment & weekend living",
+      "Near holy destination Khatushyam Ji",
+      "Peaceful, green & high-growth zone"
+    ],
+    amenities: [
+      "Premium farm house plots",
+      "Peaceful green zone",
+      "High-growth investment area",
+      "Near Khatushyam Ji Temple"
+    ],
+    mainImage: project3KeyPlanImage,
+    keyPlanImage: project3KeyPlanImage,
+    plotLayoutImage: project3LayoutImage,
+    mapUrl: "https://maps.app.goo.gl/aWmPzn9m3Jh3rUAj8",
+    mapEmbedUrl: "https://maps.google.com/maps?q=Malikpur%20Sikar%20Highway%20Khatushyam&t=&z=13&ie=UTF8&iwloc=&output=embed"
   }
 ];
 
