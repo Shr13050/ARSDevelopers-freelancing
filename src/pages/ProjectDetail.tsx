@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingActions from "@/components/FloatingActions";
+import SEO from "@/components/SEO";
 import { getProjectById } from "@/data/projects";
 
 const ProjectDetail = () => {
@@ -16,6 +17,11 @@ const ProjectDetail = () => {
   if (!project) {
     return (
       <main className="min-h-screen flex items-center justify-center">
+        <SEO
+          title="Project Not Found"
+          description="The requested project could not be found. Browse our premium residential plots and properties."
+          url={`https://www.arsdevelopers.co.in/project/${id}`}
+        />
         <div className="text-center">
           <h1 className="text-4xl font-bold mb-4">Project Not Found</h1>
           <Button onClick={() => navigate("/")}>Back to Home</Button>
@@ -24,8 +30,48 @@ const ProjectDetail = () => {
     );
   }
 
+  // Generate structured data for this project
+  const projectStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "RealEstateListing",
+    "name": project.name,
+    "description": project.description,
+    "url": `https://www.arsdevelopers.co.in/project/${project.id}`,
+    "image": project.mainImage,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": project.location,
+      "addressCountry": "IN"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": project.startingPrice,
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock"
+    },
+    "seller": {
+      "@type": "RealEstateAgent",
+      "name": "ARS Developers",
+      "telephone": "+91-7065389036",
+      "url": "https://www.arsdevelopers.co.in"
+    },
+    "amenityFeature": project.amenities.map(amenity => ({
+      "@type": "LocationFeatureSpecification",
+      "name": amenity
+    }))
+  };
+
   return (
     <main className="min-h-screen">
+      <SEO
+        title={`${project.name} - Premium Plots in ${project.location.split(',')[0]}`}
+        description={`${project.description} Plot sizes: ${project.plotSizes.join(', ')}. Starting from ${project.startingPrice}. Contact ARS Developers at +91-7065389036`}
+        keywords={`${project.name}, plots in ${project.location.split(',')[0]}, ${project.amenities.slice(0, 5).join(', ')}, ARS Developers, residential plots`}
+        url={`https://www.arsdevelopers.co.in/project/${project.id}`}
+        image={project.mainImage}
+        type="product"
+        structuredData={projectStructuredData}
+      />
       <Navbar />
       
       {/* Hero Section */}
@@ -33,7 +79,7 @@ const ProjectDetail = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60 z-10" />
         <motion.img
           src={project.mainImage}
-          alt={project.name}
+          alt={`${project.name} - Premium residential plots by ARS Developers`}
           className="w-full h-full object-cover"
           initial={{ scale: 1.1 }}
           animate={{ scale: 1 }}
@@ -118,6 +164,7 @@ const ProjectDetail = () => {
                   controls 
                   className="w-full"
                   poster={project.mainImage}
+                  aria-label={`${project.name} project walkthrough video`}
                 >
                   <source src={project.video} type="video/mp4" />
                   Your browser does not support the video tag.
@@ -163,7 +210,11 @@ const ProjectDetail = () => {
                   viewport={{ once: true }}
                   className="rounded-2xl overflow-hidden shadow-luxury"
                 >
-                  <img src={project.amenitiesImage} alt="Amenities" className="w-full h-full object-cover" />
+                  <img 
+                    src={project.amenitiesImage} 
+                    alt={`${project.name} amenities - ${project.amenities.slice(0, 3).join(', ')}`} 
+                    className="w-full h-full object-cover" 
+                  />
                 </motion.div>
               )}
             </div>
@@ -188,7 +239,11 @@ const ProjectDetail = () => {
                     <div className="p-4 bg-primary/10 border-b border-border">
                       <h3 className="text-xl font-bold text-foreground">Key Plan</h3>
                     </div>
-                    <img src={project.keyPlanImage} alt="Key Plan" className="w-full" />
+                    <img 
+                      src={project.keyPlanImage} 
+                      alt={`${project.name} key plan - location map`} 
+                      className="w-full" 
+                    />
                   </div>
                 )}
                 
@@ -197,7 +252,11 @@ const ProjectDetail = () => {
                     <div className="p-4 bg-primary/10 border-b border-border">
                       <h3 className="text-xl font-bold text-foreground">Plot Layout</h3>
                     </div>
-                    <img src={project.plotLayoutImage} alt="Plot Layout" className="w-full" />
+                    <img 
+                      src={project.plotLayoutImage} 
+                      alt={`${project.name} plot layout - site plan`} 
+                      className="w-full" 
+                    />
                   </div>
                 )}
               </div>
@@ -218,7 +277,11 @@ const ProjectDetail = () => {
               </h2>
               
               <div className="bg-card rounded-2xl overflow-hidden shadow-luxury max-w-2xl">
-                <img src={project.bookingPlanImage} alt="Booking Plan" className="w-full" />
+                <img 
+                  src={project.bookingPlanImage} 
+                  alt={`${project.name} booking and payment plan`} 
+                  className="w-full" 
+                />
               </div>
             </motion.div>
           )}
@@ -244,6 +307,7 @@ const ProjectDetail = () => {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
+                title={`${project.name} location map`}
               />
             </div>
             

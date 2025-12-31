@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Homepage -->
+  <url>
+    <loc>https://www.arsdevelopers.co.in/</loc>
+    <lastmod>2024-12-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Project 1: Shri Shyama Township -->
+  <url>
+    <loc>https://www.arsdevelopers.co.in/project/1</loc>
+    <lastmod>2024-12-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.arsdevelopers.co.in/assets/project-main.jpg</image:loc>
+      <image:title>Shri Shyama Township - Premium Plots near Khatu Shyam Temple</image:title>
+      <image:caption>Residential plots in Shri Madhopur, Sikar District, Rajasthan</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Project 2: Shree Ji Kuteer -->
+  <url>
+    <loc>https://www.arsdevelopers.co.in/project/2</loc>
+    <lastmod>2024-12-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.arsdevelopers.co.in/assets/project2-main.jpg</image:loc>
+      <image:title>Shree Ji Kuteer - Residential Plots in Barsana</image:title>
+      <image:caption>Premium plots near Barsana with connectivity to Mathura and Delhi</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Project 3: Shri Shyama City Farm House Phase 2 -->
+  <url>
+    <loc>https://www.arsdevelopers.co.in/project/3</loc>
+    <lastmod>2024-12-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.arsdevelopers.co.in/assets/project3-keyplan.png</image:loc>
+      <image:title>Shri Shyama City Farm House Phase 2 - Farm House Plots</image:title>
+      <image:caption>Premium farm house plots near Khatushyam Ji Temple</image:caption>
+    </image:image>
+  </url>
+
+</urlset>
+
