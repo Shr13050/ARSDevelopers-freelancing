@@ -8,6 +8,7 @@ import { projects as projectsData } from "@/data/projects";
 import projectMainImage from "@/assets/project-main.jpg";
 import project2MainImage from "@/assets/project2-main.jpg";
 import project3KeyPlanImage from "@/assets/project3-keyplan.png";
+import project4MainImage from "@/assets/project4-main.jpeg";
 
 const projects = [{
   id: 1,
@@ -33,6 +34,14 @@ const projects = [{
   image: project3KeyPlanImage,
   plotSizes: "350 - 900 sq. yards",
   status: "Farm House"
+}, {
+  id: 4,
+  title: projectsData[3].name,
+  location: projectsData[3].location,
+  price: projectsData[3].startingPrice,
+  image: project4MainImage,
+  plotSizes: "100 / 200 / 500 sq. yards",
+  status: "5 Star Resort"
 }];
 const ProjectCard = ({
   project,
@@ -139,7 +148,7 @@ const FeaturedProjects = () => {
         </motion.div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {projects.map((project, index) => <ProjectCard key={project.id} project={project} index={index} />)}
         </div>
 

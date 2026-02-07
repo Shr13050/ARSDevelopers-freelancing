@@ -13,6 +13,9 @@ import project2KeyPlanImage from "@/assets/project2-keyplan.jpg";
 import project3KeyPlanImage from "@/assets/project3-keyplan.png";
 import project3LayoutImage from "@/assets/project3-layout.jpeg";
 
+import project4MainImage from "@/assets/project4-main.jpeg";
+import project4LayoutImage from "@/assets/project4-layout.jpeg";
+
 export interface Project {
   id: number;
   name: string;
@@ -107,6 +110,36 @@ export const projects: Project[] = [
     plotLayoutImage: project3LayoutImage,
     mapUrl: "https://maps.app.goo.gl/aWmPzn9m3Jh3rUAj8",
     mapEmbedUrl: "https://maps.google.com/maps?q=Malikpur%20Sikar%20Highway%20Khatushyam&t=&z=13&ie=UTF8&iwloc=&output=embed"
+  },
+  {
+    id: 4,
+    name: "Shri Shyama Hill Valley Township",
+    location: "Near Shri Khatu Shyam Ji Temple, Rajasthan",
+    description: "ARS Developers presents your dream home at the feet of Shri Khatu Shyam Ji. A 71 Acre Government Approved Project featuring The Hill View Resort (5 Star) - a premium township designed for luxury living and spiritual serenity.",
+    plotSizes: ["100 sq. yards", "200 sq. yards", "500 sq. yards"],
+    startingPrice: "₹3,600/sq.yd",
+    pricePerUnit: "₹3,600 per sq. yard",
+    highlights: [
+      "71 Acre Govt. Approved Project",
+      "Features The Hill View Resort (5 Star)",
+      "Near holy Shri Khatu Shyam Ji Temple",
+      "Premium township with luxury amenities",
+      "A Name You Can Trust - ARS Developers"
+    ],
+    amenities: [
+      "Boundary Wall",
+      "Main Entrance Gate",
+      "CCTV Camera",
+      "Water Supply",
+      "24 Hours Security",
+      "35 Feet Wide Road",
+      "Street Lights",
+      "Greenery"
+    ],
+    mainImage: project4MainImage,
+    plotLayoutImage: project4LayoutImage,
+    mapUrl: "https://www.google.com/maps/place/27%C2%B028'52.7%22N+75%C2%B050'27.0%22E/@27.4812965,75.8382454,776m/data=!3m2!1e3!4b1!4m4!3m3!8m2!3d27.4812965!4d75.8408203?hl=en&entry=ttu",
+    mapEmbedUrl: "https://maps.google.com/maps?q=27.4812965,75.8408203&t=&z=13&ie=UTF8&iwloc=&output=embed"
   }
 ];
 
